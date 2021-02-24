@@ -3,8 +3,8 @@ package main;
 import java.util.Scanner;
 
 public class Matrix {
-    private int[][] data;
-    int lines, columns;
+    public int[][] data;
+    public int lines, columns;
 
     public Matrix(int m, int n) {
         this.lines = m;
@@ -24,7 +24,7 @@ public class Matrix {
         if (a.length == this.lines * this.columns) {
             for (int i = 0; i < this.lines; ++i) {
                 for (int j = 0; j < this.columns; ++j) {
-                    this.data[i][j] = a[i * j];
+                    this.data[i][j] = a[i * this.columns + j];
                 }
             }
         }
