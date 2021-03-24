@@ -6,13 +6,15 @@ import java.util.Iterator;
 public class Main {
 
     public static void main(String[] args) {
-        Fraction[] fRaw = new Fraction[5];
+        Fraction[] fRaw = new Fraction[7];
         fRaw[0] = new Fraction(1, 2);
         fRaw[1] = new Fraction(2, 3);
         fRaw[2] = new Fraction(3, 2);
         fRaw[3] = new Fraction(6, 4);
         fRaw[4] = new Fraction(6, 7);
-	    Fractions fractions = new Fractions(fRaw, 5);
+        fRaw[5] = new Fraction(2, 3);
+        fRaw[6] = new Fraction(7, 6);
+	    Fractions fractions = new Fractions(fRaw, 7);
 
 	    for (Fraction f : fractions) {
 	        for (Fraction g : fractions) {
