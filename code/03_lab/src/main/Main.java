@@ -4,25 +4,40 @@ package main;
 Класс, представляющий список публикаций учёного, с порядком на основе индекса Хирша.
 */
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Main {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> d = new HashMap<>();
-        d.put("paper1", 8);
-        d.put("paper2", 10);
-        d.put("paper3", 12);
-        d.put("paper4", 5);
-        d.put("paper5", 4);
-        d.put("paper6", 2);
+        Publications p1 = new Publications("scientist", 4);
+        Publications p2 = new Publications("scientist2", 4);
+        p1.fillPublicationsFromKeyboard();
+        p2.fillPublicationsFromKeyboard();
 
-        Publications p = new Publications("scientist", 6);
-        p.fillPublicationsFromKeyboard();
+        Publications[] data = {p1, p2};
+        Arrays.sort(data);
+        for (Publications p : data) {
+            System.out.println(p.getHirshIndex());
+            p.displayPublications();
+        }
 
-        p.displayPublications();
-        p.sortPublications();
-        System.out.println();
-        p.displayPublications();
     }
 }
+/*
+paper1 8
+paper2 10
+paper3 12
+paper4 8
+paper1 4
+paper2 3
+paper4 7
+paper5 4
+ */
+
+/*
+paper1 4
+paper2 3
+paper4 7
+paper5 4
+ */

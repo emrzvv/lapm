@@ -30,10 +30,41 @@ class Paper implements Comparable<Paper> {
     }
 }
 
-public class Publications{
+public class Publications implements Comparable<Publications>{
     public String scientistName;
     public Paper[] papers;
     public int papersAmount;
+
+    @Override
+    public int compareTo(Publications pub) {
+        return Integer.compare(this.getHirshIndex(), pub.getHirshIndex());
+    }
+
+    public boolean hPapersHaveMinhCitations(int h) {
+        int amount = 0;
+        for (Paper p : papers) {
+            if (p.citations >= h) {
+                amount++;
+            }
+        }
+        return h <= amount;
+    }
+
+    public int getHirshIndex() {
+        this.sortPublications();
+        int l = 0, r = Integer.min(papersAmount, papers[papersAmount - 1].citations);
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            //System.out.println(l + " " + m + " " + r);
+            if (hPapersHaveMinhCitations(m)) {
+                l = m + 1;
+            }
+            else {
+                r = m - 1;
+            }
+        }
+        return l - 1;
+    }
 
     public Publications(String _scientistName, Paper[] _papers) {
         this.scientistName = _scientistName;
