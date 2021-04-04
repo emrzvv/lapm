@@ -5,21 +5,23 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<String> lines = new ArrayList<>(Arrays.asList("aba", "abacaba", "aba", "abc", "abacaba", "zzz"));
-        ArrayList<Stream<String>> streams = new ArrayList<>();
+        Lines allLines = new Lines();
+        allLines.addInTail(new Node<String>("abacaba"));
+        allLines.addInTail(new Node<String>("abacaba"));
+        allLines.addInTail(new Node<String>("abc"));
+        allLines.addInTail(new Node<String>("zzz"));
+        allLines.addInTail(new Node<String>("zzz"));
+        allLines.addInTail(new Node<String>("zz"));
+        allLines.addInTail(new Node<String>("abcd"));
+        allLines.addInTail(new Node<String>("123567"));
+        allLines.addInTail(new Node<String>("123"));
 
-        HashSet<String> checker = new HashSet<>();
+        /*allLines.addInTail(new Node<>("1"));
+        allLines.addInTail(new Node<>("999"));
+        allLines.addInTail(new Node<>("22"));
+        allLines.addInTail(new Node<>("333"));*/
 
-        lines.forEach((line) -> {
-            if (!checker.contains(line)) {
-                checker.add(line);
-                streams.add(lines.stream().filter(line::equals));
-            }
-        });
-
-        streams.forEach((s) -> {
-            s.forEach((toPrint) -> {System.out.print(toPrint + " ");});
-            System.out.println();
-        });
+        Optional<Integer> res = allLines.getOptional();
+        System.out.println(Optional.ofNullable(res));
     }
 }
