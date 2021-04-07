@@ -21,6 +21,9 @@ public class Main {
         allLines.addInTail(new Node<>("22"));
         allLines.addInTail(new Node<>("333"));*/
 
+        Stream<Node<String>> s = allLines.getStream();
+        s.forEach(Node::display);
+
         Optional<Integer> res = allLines.getOptional();
         System.out.println(Optional.ofNullable(res));
     }
