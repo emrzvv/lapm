@@ -43,7 +43,7 @@ public class PictureForm {
                         }
                         else {
                             applyButton.setText("Error");
-                        }
+                        }1
 
                     } catch (NumberFormatException nfe) {
                         System.out.println("error");

@@ -70,12 +70,13 @@ template<int L, int H>
 MyStack<L, H>::MyStack() {
     this->range = H - L + 1;
     if (range <= 256) is_char = true;
-    else if (range <= 65536) is_short = true;
+    else if (range <= 65536 && range > 256) is_short = true;
     else is_int = true;
 }
 
 int main() {
-    MyStack<l2, h2> stack;
+    MyStack<l1, h1> stack;
+    //cout << stack.is_char << " " << stack.is_short << " " << stack.is_int << "\n";
     int req;
     cin >> req;
     while (req--) {
